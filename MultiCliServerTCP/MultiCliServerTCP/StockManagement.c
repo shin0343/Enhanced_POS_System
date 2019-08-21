@@ -1,16 +1,11 @@
 #include "StockManagement.h"
 
- RecvData TotalDataArr[5000];
- int TotalArrIdx;
- int TotalArrSize;
- int CoffeeBeanStock;
- int FruitStock;
-
-
 void FirstInit() //TotalDataArr를 포함한 초기 데이터 초기화. 매일 마감 정산후 호출
 {
 	memset(MonthSaleAccount, 0, sizeof(MonthSaleAccount));
 	memset(DaySaleAccount, 0, sizeof(DaySaleAccount));
+	memset(DailyTypeSale, 0, sizeof(DailyTypeSale));
+
 	TotalArrIdx = 0;
 	CoffeeBeanStock = 100; //10kg
 	FruitStock = 1000; //100kg
@@ -20,6 +15,8 @@ void FirstInit() //TotalDataArr를 포함한 초기 데이터 초기화. 매일 마감 정산후 호
 void DailyInit() //매일 초기화돼야하는 데이터만 초기화
 {
 	TotalArrIdx = 0;
+	memset(DailyTypeSale, 0, sizeof(DailyTypeSale));
+	
 }
 
 int GetTotalArrSize() //TotalDataArr의 개수 반환
@@ -78,6 +75,22 @@ int CalMonthAccount() //매일 서버에서 정산 후, 오늘 까지의 이번 달 발주량 계산하
 
 	MonthSaleAccount[curTime.tm_mon + 1] = msum;
 	return msum;
+}
+
+void PrintAllTypeSale() //모든 타입에 대해 오늘 & 지금까지의 주문 횟수 출력
+{
+	printf("- 오늘 제품별 판매량 -\n");
+	printf("Type A 주문: %d회\n",DailyTypeSale[0]);
+	printf("Type B 주문: %d회\n", DailyTypeSale[1]);
+	printf("Type C 주문: %d회\n", DailyTypeSale[2]);
+}
+
+void PrintAllMaterialUsed() //모든 재료들에 대해 오늘 사용량 출력
+{
+	printf("- 오늘 재료별 사용량 -\n");
+	printf("커피 사용량: %dg\n", TodayUsingCoffeBean * 100);
+	printf("우유 사용량: %dg\n", TodayUsingMilk * 100);
+	printf("과일 사용량: %dg\n", TodayUsingFruit * 100);
 }
 
 BOOL IsDeadline(int h, int m, int s) //현재 시스템 시간이 마감 시간에 해당한다면 1, 아니라면 0 반환
@@ -139,4 +152,36 @@ void ChkOrderItem() //원재료 발주 요청해야하는지 판별하여 요청
 	{
 		RequestFruit();
 	}
+}
+
+void SaveRecordDB() //하루 판매 & 발주 정보를 DB에 저장
+{
+	FILE *fp;
+	fp = fopen("AccountDB.txt", "a");
+
+	struct tm tm;
+	time_t t = time(NULL);
+	struct tm curTime = *localtime(&t); //현재 시간 받아옴
+
+
+	fprintf(fp, "-------- %d/%d/%d 일일 정산 시작 --------\n", curTime.tm_year + 1900, curTime.tm_mon + 1, curTime.tm_mday);
+	fprintf(fp, "-------- 오늘 판매액: %d    이번 달 판매액: %d --------\\n", CalDayAccount(), CalMonthAccount());
+
+
+	fprintf(fp, "- 오늘 제품별 판매량 -\n");
+	fprintf(fp, "Type A 주문: %d회\n", DailyTypeSale[0]);
+	fprintf(fp, "Type B 주문: %d회\n", DailyTypeSale[1]);
+	fprintf(fp, "Type C 주문: %d회\n", DailyTypeSale[2]);
+
+
+	fprintf(fp, "- 오늘 재료별 사용량 -\n");
+	fprintf(fp, "커피 사용량: %dg\n", TodayUsingCoffeBean * 100);
+	fprintf(fp, "우유 사용량: %dg\n", TodayUsingMilk * 100);
+	fprintf(fp, "과일 사용량: %dg\n", TodayUsingFruit * 100);
+
+
+	fprintf(fp, "-------- %d/%d%d 일일 정산 끝 --------\n", curTime.tm_year + 1900, curTime.tm_mon + 1, curTime.tm_mday);
+
+
+	fclose(fp);
 }

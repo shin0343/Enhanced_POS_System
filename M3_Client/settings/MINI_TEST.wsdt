@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Workspace>
+  <ConfigDictionary>
+    
+  <CurrentConfigs><Project>MINI_TEST/Debug</Project></CurrentConfigs></ConfigDictionary>
+  <Desktop>
+    <Static>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>270</Column0><Column1>27</Column1><Column2>27</Column2><Column3>27</Column3></ColumnWidths>
+      </Workspace>
+      <Build>
+        
+        
+        
+        
+      <ColumnWidth0>20</ColumnWidth0><ColumnWidth1>757</ColumnWidth1><ColumnWidth2>202</ColumnWidth2><ColumnWidth3>50</ColumnWidth3></Build>
+    <Find-in-Files><ColumnWidth0>282</ColumnWidth0><ColumnWidth1>40</ColumnWidth1><ColumnWidth2>483</ColumnWidth2></Find-in-Files><TerminalIO/></Static>
+    <Windows>
+      
+      
+    <Wnd0>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-18260-2299</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>MINI_TEST</ExpandedNode><ExpandedNode>MINI_TEST/CMSIS</ExpandedNode><ExpandedNode>MINI_TEST/Output</ExpandedNode><ExpandedNode>MINI_TEST/STM32F10x_StdPeriph_Driver</ExpandedNode><ExpandedNode>MINI_TEST/STM32F10x_StdPeriph_Driver/01.inc</ExpandedNode><ExpandedNode>MINI_TEST/STM32F10x_StdPeriph_Driver/02.src</ExpandedNode><ExpandedNode>MINI_TEST/USER</ExpandedNode><ExpandedNode>MINI_TEST/USER/01.inc</ExpandedNode><ExpandedNode>MINI_TEST/USER/02.device</ExpandedNode><ExpandedNode>MINI_TEST/USER/03.app</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd1>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-4375-2355</Identity>
+            <TabName>Build</TabName>
+            <Factory>Build</Factory>
+            <Session/>
+          </Tab>
+        <Tab><Identity>TabID-17082-29920</Identity><TabName>Find in Files</TabName><Factory>Find-in-Files</Factory><Session/></Tab></Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd1></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\i2c.c</Filename><XPos>0</XPos><YPos>116</YPos><SelStart>4784</SelStart><SelEnd>4784</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\option.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>261</SelStart><SelEnd>261</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\uart.c</Filename><XPos>0</XPos><YPos>58</YPos><SelStart>2305</SelStart><SelEnd>2305</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c</Filename><XPos>0</XPos><YPos>572</YPos><SelStart>21438</SelStart><SelEnd>21438</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\w5500.c</Filename><XPos>0</XPos><YPos>56</YPos><SelStart>10595</SelStart><SelEnd>10595</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\wizchip_conf.c</Filename><XPos>0</XPos><YPos>303</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\w5500.h</Filename><XPos>0</XPos><YPos>1015</YPos><SelStart>47293</SelStart><SelEnd>47293</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\stm32f10x.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>657</SelStart><SelEnd>657</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\stm32f10x_it.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>1350</SelStart><SelEnd>1350</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h</Filename><XPos>0</XPos><YPos>21</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\st7735.c</Filename><XPos>0</XPos><YPos>565</YPos><SelStart>13111</SelStart><SelEnd>13125</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\st7735.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>1043</SelStart><SelEnd>1043</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\timer.c</Filename><XPos>0</XPos><YPos>67</YPos><SelStart>3907</SelStart><SelEnd>3907</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\wifi_ex.c</Filename><XPos>0</XPos><YPos>215</YPos><SelStart>5377</SelStart><SelEnd>5377</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\device_driver.h</Filename><XPos>0</XPos><YPos>177</YPos><SelStart>5360</SelStart><SelEnd>5360</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\ethernet.c</Filename><XPos>0</XPos><YPos>233</YPos><SelStart>7102</SelStart><SelEnd>7102</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\wizchip_conf.h</Filename><XPos>0</XPos><YPos>130</YPos><SelStart>6655</SelStart><SelEnd>6655</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\macro.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>1928</SelStart><SelEnd>1928</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\socket.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>525</SelStart><SelEnd>525</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\socket.c</Filename><XPos>0</XPos><YPos>275</YPos><SelStart>4808</SelStart><SelEnd>4808</SelEnd></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\main.c</Filename><XPos>0</XPos><YPos>123</YPos><SelStart>2905</SelStart><SelEnd>2905</SelEnd></Tab><ActiveTab>20</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\Source\stm32f10x_it.c</Filename><XPos>0</XPos><YPos>736</YPos><SelStart>24391</SelStart><SelEnd>24391</SelEnd></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-00d7bde8><key>iaridepm.enu1</key></Toolbar-00d7bde8></Sizes></Row0></Top><Left><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>701</Bottom><Right>361</Right><x>-2</x><y>-2</y><xscreen>359</xscreen><yscreen>47</yscreen><sizeHorzCX>482527</sizeHorzCX><sizeHorzCY>47862</sizeHorzCY><sizeVertCX>487903</sizeVertCX><sizeVertCY>715886</sizeVertCY></Rect></Wnd0></Sizes></Row0></Left><Right><Row0><Sizes/></Row0></Right><Bottom><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>236</Bottom><Right>746</Right><x>-2</x><y>-2</y><xscreen>748</xscreen><yscreen>238</yscreen><sizeHorzCX>1005376</sizeHorzCX><sizeHorzCY>242363</sizeHorzCY><sizeVertCX>482527</sizeVertCX><sizeVertCY>47862</sizeVertCY></Rect></Wnd1></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Workspace>
+
+

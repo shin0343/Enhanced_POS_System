@@ -15,6 +15,10 @@ extern int TotalArrIdx;
 extern int TotalArrSize;
 extern int CoffeeBeanStock;
 extern int FruitStock;
+extern int TodayUsingCoffeBean; //오늘 커피 사용량
+extern int TodayUsingMilk; //오늘 우유 사용량
+extern int TodayUsingFruit; //오늘 과일 사용량
+extern int DailyTypeSale[3]; // 0:A ,1:B, 2:C
 
 //	소켓함수 에러출력 후 종료
 void Error_Exit(char* str)
@@ -24,26 +28,13 @@ void Error_Exit(char* str)
 	exit(1);
 }
 
-/*void chkTestCase() // 수신 확인용 함수
-{
-	printf("chkTestCase 호출됨 TotalArrIdx: %d!\n", TotalArrIdx); //추후 제거
-	int i;
-	for (i = 0; i < TotalArrIdx; i++)
-	{
-		printf("type: %c  price: %d  hour: %d  min: %d\n",
-			TotalDataArr[i].type, TotalDataArr[i].price, TotalDataArr[i].date.tm_hour, TotalDataArr[i].date.tm_min);
-	}
-}*/
-
 int main()
 {
-	FILE *fp;
-	fp = fopen("AccountDB.txt", "w+");
-
 	WSADATA wsaData;
 	SOCKET listen_fd, accept_fd, max_fd = 0, sock_fd;
 	struct sockaddr_in listen_addr, accept_addr;
 	char buf[MAX_LINE];
+	char off[4] = "OFF";
 
 	int readn, addr_len;
 	unsigned int i, fd_num = 0;
@@ -85,35 +76,24 @@ int main()
 	while (1)
 	{
 		//마감 시간 체크
-		if (IsDeadline(16, 54, 0)) //(시,분,초)
+		if (IsDeadline(15, 49, 0)) //(시,분,초)
 		{
-			struct tm tm;
-			time_t t = time(NULL);
-			struct tm curTime = *localtime(&t); //현재 시간 받아옴
-
-			printf("마감 시간입니다.\n오늘 판매액: %d\n", CalDayAccount());
+			printf("-------- 마감 시간입니다. --------\n\n오늘 판매액: %d\n", CalDayAccount());
 			printf("오늘까지 이번 달 판매액: %d\n", CalMonthAccount());
+			PrintAllTypeSale();
+			PrintAllMaterialUsed();
 
-			printf("판매 데이터 저장중 ...  ");
-			fprintf(fp, "-------- %d/%d%d/ 일일 정산 --------\n", curTime.tm_year + 100, curTime.tm_mon + 1, curTime.tm_mday);
-			fprintf(fp, "-------- 오늘 판매액: %d    이번 달 판매액: %d --------\\n\n", CalDayAccount(), CalMonthAccount());
-			Sleep(1000);
-			printf("완료\n");
+			printf("\n-------- 판매 데이터 저장중 ...  ");
+			SaveRecordDB();
+			Sleep(500);
+			printf("완료 --------\n");
+
 			DailyInit();
 
 			for (i = 1; i <= new_fds.fd_count; i++)
 			{
 				sock_fd = new_fds.fd_array[i];
-				if (FD_ISSET(sock_fd, &old_fds))
-				{
-					memset(buf, 0x00, MAX_LINE);
-
-					//	nonblock 처리
-					if (ioctlsocket(sock_fd, FIONBIO, &nonBlk))
-						Error_Exit("NonBlock");
-
-					send(sock_fd, "OFF", sizeof("OFF"), 0);
-				}
+				send(sock_fd, off, 4, 0);
 			}
 
 			continue;
@@ -178,24 +158,30 @@ int main()
 						switch (tmp.type)
 						{
 						case 'A':
+							DailyTypeSale[0] += 1;
 							tmp.price = 1000;
 							CoffeeBeanStock -= 1;
+							TodayUsingCoffeBean += 1;
 							break;
 						case 'B':
+							DailyTypeSale[1] += 1;
 							tmp.price = 2000;
 							CoffeeBeanStock -= 1;
 							MilkStock -= 1;
+							TodayUsingMilk += 1;
 							break;
 						case 'C':
+							DailyTypeSale[2] += 1;
 							tmp.price = 3000;
 							FruitStock -= 1;
+							TodayUsingFruit += 1;
 							break;
 						}
 						tmp.date = curTime;
 
 						//하루 전체 데이터에 추가
 						AddRecvData(tmp);
-						printf("totaldata[%d]: %c, %d\n", TotalArrIdx-1, TotalDataArr[TotalArrIdx - 1].type, TotalDataArr[TotalArrIdx - 1].price);
+						printf("\n\n[%d]: %c, %d\n", TotalArrIdx-1, TotalDataArr[TotalArrIdx - 1].type, TotalDataArr[TotalArrIdx - 1].price);
 
 						//주문 받을 때마다 발주 필요한지 재고 체크
 						ChkOrderItem();
@@ -211,7 +197,6 @@ int main()
 		}
 	}
 
-	fclose(fp);
 	closesocket(listen_fd);
 	WSACleanup();
 	return 0;

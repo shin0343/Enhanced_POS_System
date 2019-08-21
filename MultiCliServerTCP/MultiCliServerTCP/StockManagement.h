@@ -27,10 +27,15 @@ int TotalArrSize; //현재 TotalDataArr의 전체 사이즈
 
 int MonthSaleAccount[13]; //1~12월 판매액 보관
 int DaySaleAccount[32]; //1~31일 판매액 보관
+
 int CoffeeBeanStock; //남은 커피원두 100g단위
 int MilkStock; //남은 과일 100g단위
 int FruitStock; //남은 과일 100g단위
-//int TotalSale[3]; // 0:A ,1:B, 2:C
+int TodayUsingCoffeBean; //오늘 커피 사용량
+int TodayUsingMilk; //오늘 우유 사용량
+int TodayUsingFruit; //오늘 과일 사용량
+
+int DailyTypeSale[3]; // 0:A ,1:B, 2:C
 
 void FirstInit(); //시스템 첫 가동시 수행되는 데이터 초기화
 
@@ -46,6 +51,10 @@ int CalDayAccount(); //매일 마감 시간에 서버에서 정산 후 발주량 계산하여 반환
 
 int CalMonthAccount(); //매월 마감 시간에 서버에서 정산 후 발주량 계산하여 반환
 
+void PrintAllTypeSale(); //모든 타입에 대해 오늘 주문 횟수 출력
+
+void PrintAllMaterialUsed(); //모든 재료들에 대해 오늘 사용량 출력
+
 BOOL IsDeadline(int h, int m, int s); //현재 시스템 시간이 마감 시간에 해당한다면 1, 아니라면 0 반환
 
 void RequestCoffeBean(); //커피원두 요청
@@ -53,5 +62,7 @@ void RequestCoffeBean(); //커피원두 요청
 void RequestFruit(); //과일 요청
 
 void ChkOrderItem(); //원재료 발주 요청해야하는지 판별하여 요청
+
+void SaveRecordDB(); //하루 판매 & 발주 정보를 DB에 저장
 
 #endif
