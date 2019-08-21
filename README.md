@@ -1,9 +1,13 @@
 POS System Using Cortex-M3
 ====================
 
+![M3 board](M3 board.JPG)
+
 - - -
 ------------------ 개발환경 세팅 ------------------
 ------------------------------------------------------
+0. WillTek Cortex M3 IoT(STM32F103C8T6 내장) 보드 필요
+0. LED 1ea, KEY 3ea, PWM Timer(Buzzer), UART, USB, Ethernet(SPI), ZYRO(I2C), 조도센서(ADC), WiFi Module
 1. IAR IDE 설치
 2. TeraTerm 설치
 3. 장치 관리자를 통해 M3 보드를 Silicon COM4(~)로 설정
@@ -46,3 +50,7 @@ POS System Using Cortex-M3
  - M3 보드의 가속도 센서를 이용하여, Z축의 센서 값이 음수가 되면 POS(클라이언트)가 넘어졌거나 크게 기울었다는 것이므로 M3 보드의 부저음을 0.7초마다 울리고, 서버에 POS FLIPPED 메시지 전송
  - M3 보드의 조도 센서를 이용하여, ADC 값이 특정 값 이하가 되면 구매자가 POS(클라이언트)에 접근한 것으로 취급하여, 이 경우에만 서버에 POS Customer Arrived 메시지 전송하고 보드의 LCD를 출력(구매자가 없을 땐 LCD Cleaer하여 OFF상태)
 - - -
+
+<br><br>
+
+[Project Video Link](https://blog.naver.com/tlswoguq/221623981991)
