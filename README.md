@@ -1,7 +1,7 @@
 POS System Using Cortex-M3
 ====================
 
-![M3 board](M3 board.JPG)
+![M3 board](M3_board.JPG)
 
 - - -
 ------------------ 개발환경 세팅 ------------------
