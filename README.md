@@ -7,7 +7,7 @@ POS System Using Cortex-M3
 ------------------ 개발환경 세팅 ------------------
 ------------------------------------------------------
 0. WillTek Cortex M3 IoT(STM32F103C8T6 내장) 보드 필요
-0. LED 1ea, KEY 3ea, PWM Timer(Buzzer), UART, USB, Ethernet(SPI), ZYRO(I2C), 조도센서(ADC), WiFi Module
+0. LED 1ea, KEY 3ea, PWM Timer(Buzzer), UART, USB, Ethernet(SPI), ZYRO(I2C), 조도센서(ADC), WiFi Module 내장
 1. IAR IDE 설치
 2. TeraTerm 설치
 3. 장치 관리자를 통해 M3 보드를 Silicon COM4(~)로 설정
