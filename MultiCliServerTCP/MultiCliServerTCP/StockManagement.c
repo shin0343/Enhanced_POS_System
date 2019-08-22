@@ -16,7 +16,7 @@ void DailyInit() //매일 초기화돼야하는 데이터만 초기화
 {
 	TotalArrIdx = 0;
 	memset(DailyTypeSale, 0, sizeof(DailyTypeSale));
-	
+
 }
 
 int GetTotalArrSize() //TotalDataArr의 개수 반환
@@ -80,7 +80,7 @@ int CalMonthAccount() //매일 서버에서 정산 후, 오늘 까지의 이번 달 발주량 계산하
 void PrintAllTypeSale() //모든 타입에 대해 오늘 & 지금까지의 주문 횟수 출력
 {
 	printf("- 오늘 제품별 판매량 -\n");
-	printf("Type A 주문: %d회\n",DailyTypeSale[0]);
+	printf("Type A 주문: %d회\n", DailyTypeSale[0]);
 	printf("Type B 주문: %d회\n", DailyTypeSale[1]);
 	printf("Type C 주문: %d회\n", DailyTypeSale[2]);
 }
@@ -98,7 +98,7 @@ BOOL IsDeadline(int h, int m, int s) //현재 시스템 시간이 마감 시간에 해당한다면
 	time_t t = time(NULL);
 	tm curTime = *localtime(&t); //현재 시간 받아옴
 
-	if (curTime.tm_hour == h && curTime.tm_min == m && curTime.tm_sec==s)
+	if (curTime.tm_hour == h && curTime.tm_min == m && curTime.tm_sec == s)
 	{
 		return true;
 	}
@@ -156,7 +156,7 @@ void ChkOrderItem() //원재료 발주 요청해야하는지 판별하여 요청
 
 void SaveRecordDB() //하루 판매 & 발주 정보를 DB에 저장
 {
-	FILE *fp;
+	FILE* fp;
 	fp = fopen("AccountDB.txt", "a");
 
 	struct tm tm;

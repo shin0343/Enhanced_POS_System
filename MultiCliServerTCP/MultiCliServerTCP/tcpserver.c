@@ -50,13 +50,13 @@ int main()
 	if (listen_fd == INVALID_SOCKET)
 		return 1;
 
-	memset((void *)&listen_addr, 0x00, sizeof(listen_addr));
+	memset((void*)& listen_addr, 0x00, sizeof(listen_addr));
 
 	listen_addr.sin_family = AF_INET;
 	listen_addr.sin_port = htons(PORT);
 	listen_addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
-	if (bind(listen_fd, (struct sockaddr *)&listen_addr, sizeof(listen_addr)) == SOCKET_ERROR)
+	if (bind(listen_fd, (struct sockaddr*) & listen_addr, sizeof(listen_addr)) == SOCKET_ERROR)
 		return 1;
 
 	if (listen(listen_fd, BACKLOG) == SOCKET_ERROR)
@@ -93,7 +93,7 @@ int main()
 			for (i = 1; i <= new_fds.fd_count; i++)
 			{
 				sock_fd = new_fds.fd_array[i];
-				send(sock_fd, off, 4, 0);
+				send(sock_fd, off, sizeof(off), 0);
 			}
 
 			continue;
@@ -107,7 +107,7 @@ int main()
 		if (FD_ISSET(listen_fd, &old_fds))
 		{
 			addr_len = sizeof(struct sockaddr_in);
-			accept_fd = accept(listen_fd, (struct sockaddr *)&accept_addr, &addr_len);
+			accept_fd = accept(listen_fd, (struct sockaddr*) & accept_addr, &addr_len);
 			if (accept_fd == INVALID_SOCKET)
 			{
 				continue;
@@ -124,7 +124,7 @@ int main()
 				memset(buf, 0x00, MAX_LINE);
 
 				//	nonblock 처리
-				if (ioctlsocket(sock_fd, FIONBIO, &nonBlk)) 
+				if (ioctlsocket(sock_fd, FIONBIO, &nonBlk))
 					Error_Exit("NonBlock");
 
 				if ((readn = recv(sock_fd, buf, MAX_LINE, 0)) <= 0) //연결종료
@@ -141,7 +141,6 @@ int main()
 					}
 					if (!strncmp("POS", buf, 3))
 					{
-						//send(sock_fd, buf, sizeof(buf), 0);
 						printf("%s", buf);
 						continue;
 					}
@@ -181,16 +180,13 @@ int main()
 
 						//하루 전체 데이터에 추가
 						AddRecvData(tmp);
-						printf("\n\n[%d]: %c, %d\n", TotalArrIdx-1, TotalDataArr[TotalArrIdx - 1].type, TotalDataArr[TotalArrIdx - 1].price);
+						printf("\n\n[%d]: %c, %d\n", TotalArrIdx - 1, TotalDataArr[TotalArrIdx - 1].type, TotalDataArr[TotalArrIdx - 1].price);
 
 						//주문 받을 때마다 발주 필요한지 재고 체크
 						ChkOrderItem();
 
 						i++;
 					}
-
-
-					//chkTestCase(); // 수신 확인용 함수
 				}
 				if (--fd_num <= 0) break;
 			}
