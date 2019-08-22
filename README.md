@@ -46,11 +46,11 @@ POS System Using Cortex-M3
  - 다중 클라이언트 접속을 지원하는 TCP 서버를 Visual C 환경에서 Non-Blocking 개발
  - 서버에서 마감 시간이 되면 필요 정보들을 파일 출력으로 txt파일(DB)에 저장하고, 연결된 모든 POS(클라이언트)에 OFF 메시지를 보냄
  - 마감 시간에 OFF 메시지를 받은 POS들은 하루동안 판매된 정보들을 초기화
- - PO(클라이언트)S를 보조하도록 M3 보드의 센서 활용하는 기능 구현
+ - POS(클라이언트)를 보조하도록 M3 보드의 센서 활용하는 기능 구현
  - M3 보드의 가속도 센서를 이용하여, Z축의 센서 값이 음수가 되면 POS(클라이언트)가 넘어졌거나 크게 기울었다는 것이므로 M3 보드의 부저음을 0.7초마다 울리고, 서버에 POS FLIPPED 메시지 전송
  - M3 보드의 조도 센서를 이용하여, ADC 값이 특정 값 이하가 되면 구매자가 POS(클라이언트)에 접근한 것으로 취급하여, 이 경우에만 서버에 POS Customer Arrived 메시지 전송하고 보드의 LCD를 출력(구매자가 없을 땐 LCD Cleaer하여 OFF상태)
 - - -
 
-<br><br>
+<br>
 
 [Project Video Link](https://blog.naver.com/tlswoguq/221623981991)
