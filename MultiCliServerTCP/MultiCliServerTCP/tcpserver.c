@@ -50,13 +50,13 @@ int main()
 	if (listen_fd == INVALID_SOCKET)
 		return 1;
 
-	memset((void*)& listen_addr, 0x00, sizeof(listen_addr));
+	memset((void *)&listen_addr, 0x00, sizeof(listen_addr));
 
 	listen_addr.sin_family = AF_INET;
 	listen_addr.sin_port = htons(PORT);
 	listen_addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
-	if (bind(listen_fd, (struct sockaddr*) & listen_addr, sizeof(listen_addr)) == SOCKET_ERROR)
+	if (bind(listen_fd, (struct sockaddr *)&listen_addr, sizeof(listen_addr)) == SOCKET_ERROR)
 		return 1;
 
 	if (listen(listen_fd, BACKLOG) == SOCKET_ERROR)
@@ -76,7 +76,7 @@ int main()
 	while (1)
 	{
 		//마감 시간 체크
-		if (IsDeadline(15, 49, 0)) //(시,분,초)
+		if (IsDeadline(14, 6, 0)) //(시,분,초)
 		{
 			printf("-------- 마감 시간입니다. --------\n\n오늘 판매액: %d\n", CalDayAccount());
 			printf("오늘까지 이번 달 판매액: %d\n", CalMonthAccount());
@@ -85,7 +85,7 @@ int main()
 
 			printf("\n-------- 판매 데이터 저장중 ...  ");
 			SaveRecordDB();
-			Sleep(500);
+			Sleep(1000);
 			printf("완료 --------\n");
 
 			DailyInit();
@@ -107,7 +107,7 @@ int main()
 		if (FD_ISSET(listen_fd, &old_fds))
 		{
 			addr_len = sizeof(struct sockaddr_in);
-			accept_fd = accept(listen_fd, (struct sockaddr*) & accept_addr, &addr_len);
+			accept_fd = accept(listen_fd, (struct sockaddr *)&accept_addr, &addr_len);
 			if (accept_fd == INVALID_SOCKET)
 			{
 				continue;
@@ -141,6 +141,7 @@ int main()
 					}
 					if (!strncmp("POS", buf, 3))
 					{
+						//send(sock_fd, buf, sizeof(buf), 0);
 						printf("%s", buf);
 						continue;
 					}
@@ -187,6 +188,9 @@ int main()
 
 						i++;
 					}
+
+
+					//chkTestCase(); // 수신 확인용 함수
 				}
 				if (--fd_num <= 0) break;
 			}

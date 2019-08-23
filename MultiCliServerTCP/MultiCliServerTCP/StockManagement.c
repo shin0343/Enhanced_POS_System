@@ -88,7 +88,7 @@ void PrintAllTypeSale() //모든 타입에 대해 오늘 & 지금까지의 주문 횟수 출력
 void PrintAllMaterialUsed() //모든 재료들에 대해 오늘 사용량 출력
 {
 	printf("- 오늘 재료별 사용량 -\n");
-	printf("커피 사용량: %dg\n", TodayUsingCoffeBean * 100);
+	printf("커피 원두 사용량: %dg\n", TodayUsingCoffeBean * 100);
 	printf("우유 사용량: %dg\n", TodayUsingMilk * 100);
 	printf("과일 사용량: %dg\n", TodayUsingFruit * 100);
 }
@@ -134,7 +134,7 @@ void RequestFruit()
 
 void ChkOrderItem() //원재료 발주 요청해야하는지 판별하여 요청
 {
-	printf("\n현재 원두 재고: %dg\n", CoffeeBeanStock * 100);
+	printf("\n현재 커피 원두 재고: %dg\n", CoffeeBeanStock * 100);
 	printf("현재 우유 재고: %dg\n", MilkStock * 100);
 	printf("현재 과일 재고: %dg\n", FruitStock * 100);
 
@@ -156,7 +156,7 @@ void ChkOrderItem() //원재료 발주 요청해야하는지 판별하여 요청
 
 void SaveRecordDB() //하루 판매 & 발주 정보를 DB에 저장
 {
-	FILE* fp;
+	FILE *fp;
 	fp = fopen("AccountDB.txt", "a");
 
 	struct tm tm;
@@ -175,7 +175,7 @@ void SaveRecordDB() //하루 판매 & 발주 정보를 DB에 저장
 
 
 	fprintf(fp, "- 오늘 재료별 사용량 -\n");
-	fprintf(fp, "커피 사용량: %dg\n", TodayUsingCoffeBean * 100);
+	fprintf(fp, "커피 원두 사용량: %dg\n", TodayUsingCoffeBean * 100);
 	fprintf(fp, "우유 사용량: %dg\n", TodayUsingMilk * 100);
 	fprintf(fp, "과일 사용량: %dg\n", TodayUsingFruit * 100);
 
