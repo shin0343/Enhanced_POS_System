@@ -165,7 +165,7 @@ void SaveRecordDB() //하루 판매 & 발주 정보를 DB에 저장
 
 
 	fprintf(fp, "-------- %d/%d/%d 일일 정산 시작 --------\n", curTime.tm_year + 1900, curTime.tm_mon + 1, curTime.tm_mday);
-	fprintf(fp, "-------- 오늘 판매액: %d    이번 달 판매액: %d --------\\n", CalDayAccount(), CalMonthAccount());
+	fprintf(fp, "-------- 오늘 판매액: %d    이번 달 판매액: %d --------\n", CalDayAccount(), CalMonthAccount());
 
 
 	fprintf(fp, "- 오늘 제품별 판매량 -\n");
